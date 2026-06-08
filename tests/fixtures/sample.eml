@@ -1,0 +1,33 @@
+From: Alice Example <alice@example.com>
+To: Bob Example <bob@example.com>
+Cc: Archive <archive@example.com>
+Subject: Quarterly status & next steps
+Date: Mon, 8 Jun 2026 09:30:00 -0700
+Message-ID: <sample-123@example.com>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="boundary-1"
+
+--boundary-1
+Content-Type: multipart/alternative; boundary="boundary-2"
+
+--boundary-2
+Content-Type: text/plain; charset="utf-8"
+
+Hello Bob,
+
+Revenue increased by 12%.
+
+See https://example.com/report for details.
+--boundary-2
+Content-Type: text/html; charset="utf-8"
+
+<p>Hello Bob,</p><p>Revenue increased by <strong>12%</strong>.</p>
+--boundary-2--
+--boundary-1
+Content-Type: text/plain; name="notes.txt"
+Content-Disposition: attachment; filename="notes.txt"
+Content-Transfer-Encoding: base64
+
+Rm9sbG93IHVwIG5leHQgd2Vlay4=
+--boundary-1--
+

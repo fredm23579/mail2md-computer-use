@@ -24,6 +24,7 @@ mail2md-output/
 *.mbx
 *.pst
 *.ost
+!tests/fixtures/*.eml
 
 # Editors and operating systems
 .vscode/
