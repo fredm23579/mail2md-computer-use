@@ -1,0 +1,68 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mail2md-computer-use"
+version = "0.1.0"
+description = "Policy-gated Gemini Computer Use exports and deterministic email-to-Markdown conversion."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+authors = [{ name = "fredm23579" }]
+keywords = ["email", "markdown", "gemini", "computer-use", "gmail", "outlook"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Typing :: Typed",
+]
+dependencies = [
+  "extract-msg>=0.55,<1",
+  "google-genai>=2.6,<3",
+  "markdownify>=1.2,<2",
+  "playwright>=1.52,<2",
+  "typer>=0.16,<1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "build>=1.2,<2",
+  "mypy>=1.16,<2",
+  "pytest>=8.4,<10",
+  "ruff>=0.12,<1",
+]
+
+[project.scripts]
+mail2md = "mail2md.cli:app"
+
+[project.urls]
+Homepage = "https://github.com/fredm23579/mail2md-computer-use"
+Issues = "https://github.com/fredm23579/mail2md-computer-use/issues"
+Security = "https://github.com/fredm23579/mail2md-computer-use/security/policy"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mail2md"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src/mail2md", "tests", "README.md", "SECURITY.md", "LICENSE", "pyproject.toml"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+packages = ["mail2md"]

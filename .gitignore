@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Mail2MD sensitive/runtime data
+.mail2md-browser-profile/
+mail-downloads/
+mail2md-output/
+*.eml
+*.msg
+*.mbox
+*.mbx
+*.pst
+*.ost
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
