@@ -184,7 +184,13 @@ def test_existing_symlinked_output_is_rejected(tmp_path: Path) -> None:
     outside = tmp_path / "outside"
     outside.mkdir()
     output = tmp_path / "output"
-    output.symlink_to(outside, target_is_directory=True)
+    try:
+        output.symlink_to(outside, target_is_directory=True)
+    except OSError as exc:
+        # Creating a symlink on Windows requires admin or Developer Mode
+        # (SeCreateSymbolicLinkPrivilege). Where that privilege is unavailable
+        # we cannot construct the fixture, so skip rather than fail.
+        pytest.skip(f"cannot create symlinks in this environment: {exc}")
     document = EmailDocument(
         source_path=Path("unsafe.eml"),
         source_format="eml",
