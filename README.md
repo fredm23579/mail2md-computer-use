@@ -153,6 +153,24 @@ case-insensitive filename collisions, symlink rejection, Markdown injection boun
 host policy, model text restrictions, safety decisions, scroll semantics, download filtering, and
 runtime limits.
 
+## Known Limitations
+
+- Live provider/API paths may require credentials, network access, and manual setup that local tests do not exercise.
+- Passing local tests does not prove legal, filing, privacy, or production readiness.
+- Claims in this README are governed by `docs/claim_matrix.md`; incomplete or optional features must stay labeled as such.
+
+
+## Documentation Truthfulness
+
+This repository follows the Truthful Build Doctrine in `docs/truthful-build-doctrine.md`. Public claims are tracked in `docs/claim_matrix.md`, and public releases should complete `docs/release_truthfulness_checklist.md`. Unsupported claims are defects.
+
+Run the local gate before publishing README-affecting changes:
+
+```bash
+scripts/truthfulness.sh
+```
+
+
 ## License
 
 Apache License 2.0. See [LICENSE](LICENSE).
