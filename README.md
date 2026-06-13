@@ -25,6 +25,10 @@ raw headers, inline CID relationships, nested attached messages, and attachment 
 identities and exclusive writes prevent distinct messages or attachments from overwriting each
 other.
 
+### New Features & Improvements
+- **Defensive Programming**: File iteration and metadata parsing degrade gracefully via try/catch blocks rather than crashing the full job when encountering a malformed email.
+- **Detailed Inline Comments**: The core files, including `models.py`, `converter.py`, and `cli.py`, contain extensive documentation to help contributors securely navigate parsing edge cases.
+
 ## Safety controls
 
 - Dry-run browser commands unless `--execute` is supplied
@@ -159,7 +163,6 @@ runtime limits.
 - Passing local tests does not prove legal, filing, privacy, or production readiness.
 - Claims in this README are governed by `docs/claim_matrix.md`; incomplete or optional features must stay labeled as such.
 
-
 ## Documentation Truthfulness
 
 This repository follows the Truthful Build Doctrine in `docs/truthful-build-doctrine.md`. Public claims are tracked in `docs/claim_matrix.md`, and public releases should complete `docs/release_truthfulness_checklist.md`. Unsupported claims are defects.
@@ -169,7 +172,6 @@ Run the local gate before publishing README-affecting changes:
 ```bash
 scripts/truthfulness.sh
 ```
-
 
 ## License
 

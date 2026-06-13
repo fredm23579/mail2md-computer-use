@@ -16,6 +16,11 @@ class Attachment:
     content_id: str | None = None
     disposition: str | None = None
 
+    def __post_init__(self) -> None:
+        """Defensive default for filename in case of empty strings."""
+        if not self.filename:
+            self.filename = "unnamed_attachment"
+
 
 @dataclass(slots=True)
 class EmailDocument:
@@ -35,4 +40,10 @@ class EmailDocument:
     body_text: str = ""
     body_html: str = ""
     attachments: list[Attachment] = field(default_factory=list)
+
+    def __post_init__(self) -> None:
+        """Ensure critical fields are strings to prevent downstream exceptions."""
+        self.subject = str(self.subject) if self.subject is not None else "(No subject)"
+        self.sender = str(self.sender) if self.sender is not None else "Unknown sender"
+
 
